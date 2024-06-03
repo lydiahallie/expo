@@ -926,7 +926,7 @@ export async function patchReactNativeAsync(projectRoot: string) {
     }
     postInstallScript +=
       'curl -sL https://patch-diff.githubusercontent.com/raw/facebook/react-native/pull/44402.diff \
-| patch -p3 -d node_modules/react-native';
+| patch -p3 -d node_modules/react-native | true';
   }
   packageJson.scripts.postinstall = postInstallScript;
   await fs.writeFile(path.join(projectRoot, 'package.json'), JSON.stringify(packageJson, null, 2));
