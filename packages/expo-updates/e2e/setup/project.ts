@@ -281,8 +281,8 @@ async function preparePackageJson(
         'detox:ios:debug:test': 'detox test -c ios.debug',
         'detox:ios:release:build': 'detox build -c ios.release',
         'detox:ios:release:test': 'detox test -c ios.release',
-        'eas-build-pre-install': './eas-hooks/eas-build-pre-install.sh',
-        'eas-build-on-success': './eas-hooks/eas-build-on-success.sh',
+        // 'eas-build-pre-install': './eas-hooks/eas-build-pre-install.sh',
+        // 'eas-build-on-success': './eas-hooks/eas-build-on-success.sh',
         ...extraScriptsGenerateTestUpdateBundlesPart,
       }
     : extraScriptsAssetExclusion;
@@ -757,7 +757,16 @@ export async function setupE2EAppAsync(
 ) {
   await copyCommonFixturesToProject(
     projectRoot,
-    ['tsconfig.json', '.detoxrc.json', 'eas.json', 'eas-hooks', 'e2e', 'includedAssets', 'scripts'],
+    [
+      'tsconfig.json',
+      '.detoxrc.json',
+      'eas.json',
+      'eas-custom-maestro.yaml',
+      'eas-hooks',
+      'e2e',
+      'includedAssets',
+      'scripts',
+    ],
     { appJsFileName: 'App.tsx', repoRoot, isTV }
   );
 
@@ -824,6 +833,13 @@ export async function setupUpdatesDisabledE2EAppAsync(
   await fs.copyFile(
     path.resolve(dirName, '..', 'fixtures', 'Updates-disabled.e2e.ts'),
     path.join(projectRoot, 'e2e', 'tests', 'Updates.e2e.ts')
+  );
+
+  // Copy Maestro test directory
+  await fs.cp(
+    path.resolve(dirName, '..', 'fixtures', 'e2e-maestro', 'Updates-disabled'),
+    path.join(projectRoot, 'e2e', 'tests', 'maestro'),
+    { recursive: true }
   );
 }
 
