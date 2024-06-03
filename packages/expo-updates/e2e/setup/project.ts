@@ -760,8 +760,8 @@ export async function setupE2EAppAsync(
     [
       'tsconfig.json',
       '.detoxrc.json',
+      '.eas',
       'eas.json',
-      'eas-custom-maestro.yaml',
       'eas-hooks',
       'e2e',
       'includedAssets',

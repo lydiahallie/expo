@@ -72,7 +72,7 @@
         "EX_UPDATES_NATIVE_DEBUG": "1"
       },
       "withoutCredentials": true,
-      "config": "eas-custom-maestro.yaml",
+      "config": "maestro-e2e.yaml",
       "distribution": "internal",
       "android": {
         "image": "latest",
