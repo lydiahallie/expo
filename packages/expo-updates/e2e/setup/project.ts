@@ -757,16 +757,7 @@ export async function setupE2EAppAsync(
 ) {
   await copyCommonFixturesToProject(
     projectRoot,
-    [
-      'tsconfig.json',
-      '.detoxrc.json',
-      '.eas',
-      'eas.json',
-      'eas-hooks',
-      'e2e',
-      'includedAssets',
-      'scripts',
-    ],
+    ['tsconfig.json', '.detoxrc.json', 'eas.json', 'eas-hooks', 'e2e', 'includedAssets', 'scripts'],
     { appJsFileName: 'App.tsx', repoRoot, isTV }
   );
 
@@ -815,7 +806,16 @@ export async function setupUpdatesDisabledE2EAppAsync(
 ) {
   await copyCommonFixturesToProject(
     projectRoot,
-    ['tsconfig.json', '.detoxrc.json', 'eas.json', 'eas-hooks', 'e2e', 'includedAssets', 'scripts'],
+    [
+      'tsconfig.json',
+      '.detoxrc.json',
+      '.eas',
+      'eas.json',
+      'eas-hooks',
+      'e2e',
+      'includedAssets',
+      'scripts',
+    ],
     {
       appJsFileName: 'App-updates-disabled.tsx',
       repoRoot,
